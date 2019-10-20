@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>We Found Them!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" data-require="leaflet@0.7.3" data-semver="0.7.3" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src ="..//static//js//narrativedata.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+  
+  <!--D3 cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<body>
+    <script>
+       
+          // var myHilitor = new Hilitor("content"); // id of the element to parse
+          // myHilitor.apply("highlight words");
+        
+        </script>
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="templates/index.html">Truthers
+            <img class="nav-ufo" src="../static/images/ufo.svg">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    
+    <div class="hero text-center" style="background-image: url(https://media.giphy.com/media/jl7WgwBxNIkk8/giphy.gif)">
+      <h1>UFO Sightings</h1>
+      <p>Plotting the Truth. We are not alone.</p>
+    </div>
+  <!-- </body>
+
+  <body> -->
+   
+    <script src="../static/js/config.js"></script>
+
+  
+    <!-- For showing Historical Items -->
+<div class="container">
+    <div class="row">
+        <h1>Ancient UFO Records</h1>
+        <div class="col col-md-4" >
+            <a href=""><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Crivelli_Carlo%2C_Annunciation.jpg
+           "  width="230px" height="300px" class="center-block img-fluid" /></a>
+            <p class="text-center" style="    text-transform: capitalize;
+           font-size: .85em;
+           font-weight: 600;
+           line-height: 1.5em;
+           color: white;
+           text-decoration: none;">Christian Depictions</p>
+           </div>
+           <div class=" col col-md-4">
+            <a href="diesel.aspx"><img src="https://ancestryofman.com/wp-content/uploads/2018/11/alien-ufo-art-cave-paintings-from-tanzania-2.jpg
+           " width="300px" height="200px" class="center-block img-fluid" /></a>
+            <p class="text-center" style="    text-transform: capitalize;
+           font-size: .85em;
+           font-weight: 600;
+           line-height: 1.5em;
+           color: white;
+           text-decoration: none;">Caveman Depictions 29000 yrs</p>
+           </div>
+           <div class="col-md-auto col-md-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/The_Celestial_Chariot_%286124515635%29.jpg/220px-The_Celestial_Chariot_%286124515635%29.jpg
+           " width="300px" height="200px" data-modal="#modal-youtube" class="center-block img-fluid" style="cursor: pointer; " />
+            <p class="text-center" style="    text-transform: capitalize;
+           font-size: .85em;
+           font-weight: 600;
+           line-height: 1.5em;
+           color: white;
+           text-decoration: none;">Indian Vimana 11000 yrs</p>
+           </div>
+    </div>
+ 
+  <div class="row">
+    <div class="col col-md-12">
+       
+          <h1>UFO Sightings Map</h1>
+          <div class="UFO_map" id="UFO_map" style="width:800px; height: 500px">
+          <img onclick="Rndit()" src="..\static\images\UFOSightings.png" alt="" class=" "></div>
+        <!-- We append our chart here. -->
+       
+      <div class="col-md-12">
+          <div id="Quotes">
+              <h1>What they say...</h1>
+              <blockquote class="UFOquotes" id="UFOquotes">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat autem ipsum exercitationem blanditiis consequatur culpa placeat illo? Unde voluptatum dolorum nulla rem ad! Necessitatibus ipsum nostrum quaerat consequuntur tenetur. Animi.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt at, magnam blanditiis dignissimos voluptates aperiam dolore enim quos nesciunt veniam eum cum, ratione tempora deleniti quaerat! Dignissimos, temporibus? Dolore, nihil.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, accusamus harum cumque, sint mollitia itaque architecto ratione sunt eius quidem nemo debitis deleniti sequi corporis quo veniam minus suscipit delectus!
+              </blockquote>            
+          </div>
+    </div>
+  </div>
+  </div> 
+
+
+  <!-- //<div class = "container"> -->
+    <!-- <div class="row">
+      <div class="col-lg-12">
+        <div id="scatter30">
+          <h1>UFOs</h1>
+            <div class="mapheat" id="mapheat" style="width: 800px; height:300px"></div>
+            <script src="../static/js/app4.js"></script>
+          </div>
+      <blockquote class='innerText' id='innerText'>Heatmap...</blockquote> -->
+      
+      <a href="page2.html">Page 2</a>
+      <a href="page3.html">Page 3</a>
+    </div>
+  </div>
+  <!-- <script src="../static/js/config.js"></script> -->
+  <!-- <script src="static/js/app_wordfinder.js"></script> -->
+ 
+  
+  <!-- <script src="static/js/app_UFOs.js"></script> -->
+   
+   <!-- Leaflet heatmap plugin-->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js" data-require="leaflet@0.7.3" data-semver="0.7.3"></script>
+  <!-- <script src="static/js/app2.js"></script> -->
+  <script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    
+</body>
+  
+    <footer class="footer">
+      <span class="bottom">Is the truth at AREA 51?</span>
+    </footer>
+  </div>
+ 
+
+  <script src="/js/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript" src="hilitor.js"></script>
+  <script src="static/js/data.js"></script>
+
+
+
+</html>
