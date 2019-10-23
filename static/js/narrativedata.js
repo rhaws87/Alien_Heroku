@@ -16,11 +16,11 @@ let listofencounter = " contact abducted 'I saw' 'missing time' 'taken away' "
 let listofshapes = ' cylindrical saucer oval object airplane aircraft airplanes helicopter helicopters craft triangle triangular circle sphere chevron V v cigar cylinder light ship'
 window.narrdata = []
 d3.csv("../static/js/UFO_Narratives.csv", function (CSVdata) {
-  // console.log(CSVdata[0][0],CSVdata[0].text);
-  // console.log('Length:',CSVdata.length)
+  console.log(CSVdata[0][0],CSVdata[0].text);
+  console.log('Length:',CSVdata.length)
   window.narrdata = CSVdata.slice()
-  // console.log('Length:',CSVdata.length)
-  // console.log(CSVdata[80000], Math.floor(Math.random() * (CSVdata.length-1)) )
+  console.log('Length:',CSVdata.length)
+  console.log(CSVdata[80000], Math.floor(Math.random() * (CSVdata.length-1)) )
   document.getElementById("UFOquotes").innerHTML = CSVdata[Math.floor(Math.random() * (CSVdata.length - 1))].text
   let myHilitor = new Hilitor("UFOquotes");
 
