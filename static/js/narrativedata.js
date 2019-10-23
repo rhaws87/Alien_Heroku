@@ -1,47 +1,77 @@
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
 // Please acknowledge use of this code by including this header.
-let listofsounds = " silence sound buzz crackle silent soundless bam quiet quietly loud thunderous boom noise sound 'no sound' 'no noise'"
+let listofsounds = " silence sound buzz crackle silent soundless bam quiet quietly loud thunderous hiss hissing dead_quiet boom noise sound no_sound no_noise"
 
-let listofcolors = " red green blue white yellow purple bright flashing 'bright light' dim orange dark black silouette shadow yellow gold glimmering silver aluminum shiny dull brilliant flash pulsing metallic blinking"
+let listofcolors = " red green blue white yellow purple bright flashing bright_light dim orange dark black silouette shadow yellow gold glimmering silver aluminum shiny dull brilliant flash pulsing metallic blinking"
 
 let listoffeelings = ' awe scared scary horrible terrified shocking shocked terrifying frightened frightening amazed amazing excited exciting surprising surprised happy sad horrified mortified confused'
 
-let listofspeeds = " slow fast instantly vanished 'just vanished' gone disappeared rapidly poof great speed 'really fast' quickly"
+let listofspeeds = " slow fast instantly vanished just_vanished gone disappeared rapidly poof great speed really_fast quickly"
 
-let listofmotion = " traveling hover leaped straight 'straight line' right angle perpendicular ninety degree 90 deg appeared reappear break upward disappear appear 'was gone' divided jumped"
+let listofmotion = " traveling hover leaped straight straight_line right_angle perpendicular ninety degree 90 deg appeared reappear break upward disappear appear 'was gone' divided jumped"
 
 let listofsize = ' colossal large small distant close huge tiny giant '
 
-let listofencounter = " contact abducted 'I saw' 'missing time' 'taken away' "
-let listofshapes = ' cylindrical saucer oval object airplane aircraft airplanes helicopter helicopters craft triangle triangular circle sphere chevron V v cigar cylinder light ship'
+let listofencounter = " contact abducted 'missing_time' 'taken_away' "
+let listofshapes = 'cigar_shaped plane planes fireball fireballs balls egg orb cylindrical saucer oval object objects airplane aircraft airplanes helicopter helicopters craft triangle triangular circle sphere chevron V v cigar cylinder light ship'
+let listofreps =['cigar_shaped','missing_time' ,'taken_away','straight_line','just_vanished','really_fast','bright_light','dead_quiet','no_sound', 'no_noise' ,'missing_time' ,'taken_away']
+let listoffinds =['cigar shaped','missing time' ,'taken away','straight line','just vanished','really fast','bright light','dead quiet','no sound', 'no noise','missing time' ,'taken away']
+let commoncolors = ["red","green","blue","white","yellow","purple","orange","black","gold","silver",'orange']
+let ccdict={'red':'#ff0000','green':'#013220','blue':'#0000ff','white':'#ffffff','yellow':'#ffff00',
+'purple':'#800080','black':'#000000','silver':'#aaa9ad','orange':'#ffa500'};
+let usedcolors=[]
 window.narrdata = []
-d3.csv("../static/js/UFO_Narratives.csv", function (CSVdata) {
-  console.log(CSVdata[0][0],CSVdata[0].text);
-  console.log('Length:',CSVdata.length)
+// d3.json(url)
+// .then(function(UFO) {
+  d3.csv("../static/js/UFO_Narratives.csv").then(function(CSVdata) { 
+//d3.csv("../static/js/UFO_Narratives.csv", function (CSVdata) {
+ 
   window.narrdata = CSVdata.slice()
-  console.log('Length:',CSVdata.length)
-  console.log(CSVdata[80000], Math.floor(Math.random() * (CSVdata.length-1)) )
+ 
   document.getElementById("UFOquotes").innerHTML = CSVdata[Math.floor(Math.random() * (CSVdata.length - 1))].text
   let myHilitor = new Hilitor("UFOquotes");
 
-  myHilitor.apply(listofsounds + listofcolors + listoffeelings + listofspeeds + listofmotion + listofsize + listofencounter + listofshapes);
+  myHilitor.apply(listofsounds + listofcolors + listoffeelings + listofspeeds + listofmotion + listofsize + listofencounter + listofshapes); 
+  return "";
 });
 function Rndit() {
   num = Math.floor(Math.random() * (window.narrdata.length - 1))
   //console.log(num,narrdata[num].text)
-  document.getElementById("UFOquotes").innerHTML = window.narrdata[num].text
+  //var textarea = $(this).val();
+// var find = ["<", ">", "\n"];
+// var replace = ["&lt;", "&gt;", "<br/>"];
+// textarea = textarea.replaceArray(find, replace);
+let textarea = window.window.narrdata[num].text
+textarea=textarea.replaceArray(listoffinds,listofreps)
+//console.clear()
+console.log(textarea)
+  document.getElementById("UFOquotes").innerHTML = textarea
   let myHilitor = new Hilitor("UFOquotes");
   myHilitor.apply(listofsounds + listofcolors + listoffeelings + listofspeeds + listofmotion + listofsize + listofencounter + listofshapes);
 
 }
-function Hilitor(id, tag) {
 
+//var textarea = $(this).val();
+// var find = ["<", ">", "\n"];
+// var replace = ["&lt;", "&gt;", "<br/>"];
+// textarea = textarea.replaceArray(find, replace);
+String.prototype.replaceArray = function(find, replace) {
+  var replaceString = this;
+  var regex; 
+  for (var i = 0; i < find.length; i++) {
+    regex = new RegExp(find[i], "gi");//replace all in text and case insensitive
+    replaceString = replaceString.replace(regex, replace[i]);
+  }
+  return replaceString;
+};
+function Hilitor(id, tag) {
+ 
   // private variables
   var targetNode = document.getElementById(id) || document.body;
   var hiliteTag = tag || "MARK";
   var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM|SPAN)$");
-  var colors = ["#800000", "#008000", "#808000", "#000080", "#800080", "#008080", "#c0c0c0",
-    "#808080", "#ff0000", "#00ff00", "#ffff00", "#0000ff", "#ff00ff", "#00ffff", "#ffffff", "#000000", "#00005f"
+  var colors = ["#000000","#800000",  "#000080", "#800080", "#c0c0c0",
+    "#ff0000", "#00ff00", "#ffff00", "#0000ff", "#ff00ff", "#00ffff", "#ffffff", "#000000", "#00005f"
     , "#000087", "#0000af", "#0000d7", "#0000ff", "#005f00", "#005f5f", "#005f87", "#005faf", "#005fd7", "#005fff"
     , "#008700", "#00875f", "#008787", "#0087af", "#0087d7", "#0087ff", "#00af00", "#00af5f", "#00af87", "#00afaf",
     "#00afd7", "#00afff", "#00d700", "#00d75f", "#00d787", "#00d7af", "#00d7d7", "#00d7ff", "#00ff00", "#00ff5f",
@@ -50,14 +80,6 @@ function Hilitor(id, tag) {
     "#5f87d7", "#5f87ff", "#5faf00", "#5faf5f", "#5faf87", "#5fafaf", "#5fafd7", "#5fafff", "#5fd700", "#5fd75f",
     "#5fd787", "#5fd7af", "#5fd7d7", "#5fd7ff", "#5fff00", "#5fff5f", "#5fff87", "#5fffaf", "#5fffd7", "#5fffff",
     "#870000", "#87005f", "#870087",
-    "#8700af", "#8700d7", "#8700ff", "#875f00", "#875f5f", "#875f87", "#875faf", "#875fd7", "#875fff",
-    "#878700", "#87875f", "#878787", "#8787af", "#8787d7", "#8787ff", "#87af00", "#87af5f", "#87af87",
-    "#87afaf", "#87afd7", "#87afff", "#87d700", "#87d75f", "#87d787", "#87d7af", "#87d7d7", "#87d7ff",
-    "#87ff00", "#87ff5f", "#87ff87", "#87ffaf", "#87ffd7", "#87ffff", "#af0000", "#af005f", "#af0087",
-    "#af00af", "#af00d7", "#af00ff", "#af5f00", "#af5f5f", "#af5f87", "#af5faf", "#af5fd7", "#af5fff",
-    "#af8700", "#af875f", "#af8787", "#af87af", "#af87d7", "#af87ff", "#afaf00", "#afaf5f", "#afaf87",
-    "#afafaf", "#afafd7", "#afafff", "#afd700", "#afd75f", "#afd787", "#afd7af", "#afd7d7", "#afd7ff",
-    "#afff00", "#afff5f", "#afff87", "#afffaf", "#afffd7", "#afffff", "#d70000", "#d7005f", "#d70087",
     "#d700af", "#d700d7", "#d700ff", "#d75f00", "#d75f5f", "#d75f87", "#d75faf", "#d75fd7", "#d75fff", "#d78700",
     "#d7875f", "#d78787", "#d787af", "#d787d7", "#d787ff", "#d7af00", "#d7af5f", "#d7af87", "#d7afaf", "#d7afd7",
     "#d7afff", "#d7d700", "#d7d75f", "#d7d787", "#d7d7af", "#d7d7d7", "#d7d7ff", "#d7ff00", "#d7ff5f", "#d7ff87",
@@ -67,10 +89,10 @@ function Hilitor(id, tag) {
     "#ffd7af", "#ffd7d7", "#ffd7ff", "#ffff00", "#ffff5f", "#ffff87", "#ffffaf", "#ffffd7", "#ffffff", "#080808",
     "#121212", "#1c1c1c", "#262626", "#303030", "#3a3a3a", "#444444", "#4e4e4e", "#585858", "#626262", "#6c6c6c",
     "#767676", "#808080", "#8a8a8a", "#949494", "#9e9e9e", "#a8a8a8", "#b2b2b2", "#bcbcbc", "#c6c6c6", "#d0d0d0",
-    "#dadada", "#e4e4e4", "#eeeeee"];
+    "#dadada","#808080",  "#e4e4e4", "#eeeeee","#808000", "#008500", "#008080"];
 
   var wordColor = [];
-  var colorIdx = 0;
+  var colorIdx = 32;//past the colors
   var matchRegExp = "";
   var openLeft = false;
   var openRight = false;
@@ -114,6 +136,7 @@ function Hilitor(id, tag) {
   };
 
   this.setRegex = function (input) {
+    
     input = input.replace(endRegExp, "");
     input = input.replace(breakRegExp, "|");
     input = input.replace(/^\||\|$/g, "");
@@ -140,6 +163,7 @@ function Hilitor(id, tag) {
 
   // recursively apply word highlighting
   this.hiliteWords = function (node) {
+   
     if (node === undefined || !node) return;
     if (!matchRegExp) return;
     if (skipTags.test(node.nodeName)) return;
@@ -151,20 +175,28 @@ function Hilitor(id, tag) {
     if (node.nodeType == 3) { // NODE_TEXT
       if ((nv = node.nodeValue) && (regs = matchRegExp.exec(nv))) {
         if (!wordColor[regs[0].toLowerCase()]) {
-          wordColor[regs[0].toLowerCase()] = colors[colorIdx++ % colors.length];
+         
+          if (commoncolors.includes(regs[0].toLowerCase())){
+           
+          wordColor[regs[0].toLowerCase()] = ccdict[regs[0].toLowerCase()] //colors[colorIdx++ % colors.length];
+        }
+          else {
+           
+            wordColor[regs[0].toLowerCase()] = colors[colorIdx++ % colors.length];
+          }
         }
 
         var match = document.createElement(hiliteTag);
+    
         match.appendChild(document.createTextNode(regs[0]));
         match.style.backgroundColor = wordColor[regs[0].toLowerCase()];
         bc = RGBtoHex(match.style.backgroundColor)//new RGBColor(match.style.backgroundColor)
         C = []
-        C = RGBColor(bc)
-        // console.log('color of background', bc)
-        // console.log(match.style.backgroundColor)
+        C = RGBColor(bc) 
         cdist = ((255 - +C.r)   + (255 - +C.g) ** 2 + (255 - +C.b) ** 2)
         // console.log(cdist)
         // console.log((C.r), (C.g), (C.b))
+        //logic to avoid unreadable  text over background
         if (((255 - +C.r)  > 120 && (255 - +C.r)  < 136) && ((255 - +C.g)  > 120 && (255 - +C.g)  < 136) && ((255 - +C.b)  > 120 && (255 - +C.b)  < 136)) {
           match.style.color = "#000";
         }
@@ -173,6 +205,7 @@ function Hilitor(id, tag) {
           match.style.color = rgb((255 - +C.r), (255 - +C.g), (255 - +C.b)); "#000";
         }
         var after = node.splitText(regs.index);
+      
         after.nodeValue = after.nodeValue.substring(regs[0].length);
         node.parentNode.insertBefore(match, after);
       }
