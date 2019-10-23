@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 # import gzip
 # import shutil
 # import os
-from geojson import Feature, FeatureCollection, Point
+# from geojson import Feature, FeatureCollection, Point
 app = Flask(__name__)
 # listofshapes=[]
 # listofstates=[]
@@ -45,8 +45,22 @@ def init():
     #dfc=pd.read_csv('UFO_Narratives.csv')
     return render_template("index.html")
     
+@app.route('/page2')
+def init2():
+    #dfc=pd.read_csv('UFO_Narratives.csv')
+    return render_template("page2.html")
+    
+@app.route('/page3')
+def init3():
+    #dfc=pd.read_csv('UFO_Narratives.csv')
+    return render_template("page3.html")
+    
+
+
 # Returns
 # @app.route('/api_getUFOText_v1.1 <index>', methods =['POST'])
 # def getUFOText(index):
 #     return dfc[index]['text']
  
+if __name__ == '__main__':
+    app.run(port=5001)

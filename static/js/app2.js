@@ -1,8 +1,13 @@
- 
 
-d3.json("..//static//js//militarybases.json", function(data) {
+// d3.json("oneurl").then(data1 =>{
+//     ds.json("tworur").then(data2 => {})
+
+// })
+
+
+d3.json("../static/js/militarybases.json", function(data) {
   // Once we get a response, send the data.features object to the createFeatures function
-   console.log(data, data);
+   console.log("data", data);
   createFeatures(data);
 });
 
@@ -74,7 +79,7 @@ var myMap = L.map("map", {
   d3.json(url)
   .then(function(UFO) {
   console.log("-----");
-  console.log(UFO);
+  console.log("UFO", UFO);
   console.log(UFO.features[20]["geometry"].coordinates);
   
   var heatArray = [];
