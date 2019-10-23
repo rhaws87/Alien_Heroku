@@ -16,11 +16,9 @@ let listofencounter = " contact abducted 'missing_time' 'taken_away' "
 let listofshapes = 'cigar_shaped plane planes fireball fireballs balls egg orb cylindrical saucer oval object objects airplane aircraft airplanes helicopter helicopters craft triangle triangular circle sphere chevron V v cigar cylinder light ship'
 let listofreps =['cigar_shaped','missing_time' ,'taken_away','straight_line','just_vanished','really_fast','bright_light','dead_quiet','no_sound', 'no_noise' ,'missing_time' ,'taken_away']
 let listoffinds =['cigar shaped','missing time' ,'taken away','straight line','just vanished','really fast','bright light','dead quiet','no sound', 'no noise','missing time' ,'taken away']
-let commoncolors = ["redish","greenish","blueish","whiteish","yellowish","purpleish","orangeish","blackish","silverish" ,"red","green","blue","white","yellow","purple","orange","black","gold","silver",'orange']
-let ccdict={'red':'#ff0000','green':'#013220','blue':'#0000ff','white':'#ffffff','yellow':'#ffff00','purple':'#800080',
-'black':'#000000','silver':'#aaa9ad','orange':'#ffa500',
-'redish':'#ff0000','greenish':'#013220','blueish':'#0000ff','whiteish':'#ffffff','yellowish':'#ffff00','purpleish':'#800080',
-'blackish':'#000000','silverish':'#aaa9ad','orangeish':'#ffa500'};
+let commoncolors = ["red","green","blue","white","yellow","purple","orange","black","gold","silver",'orange']
+let ccdict={'red':'#ff0000','green':'#013220','blue':'#0000ff','white':'#ffffff','yellow':'#ffff00',
+'purple':'#800080','black':'#000000','silver':'#aaa9ad','orange':'#ffa500'};
 let usedcolors=[]
 window.narrdata = []
  
@@ -45,7 +43,7 @@ function Rndit() {
 let textarea = window.window.narrdata[num].text
 textarea=textarea.replaceArray(listoffinds,listofreps)
 //console.clear()
-//console.log(textarea)
+console.log(textarea)
   document.getElementById("UFOquotes").innerHTML = textarea
   let myHilitor = new Hilitor("UFOquotes");
   myHilitor.apply(listofsounds + listofcolors + listoffeelings + listofspeeds + listofmotion + listofsize + listofencounter + listofshapes);
